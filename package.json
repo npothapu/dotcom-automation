@@ -1,0 +1,29 @@
+{
+  "name": "dotcom-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:dev": "ENV=DEV npx playwright test",
+    "test:qa": "ENV=QA npx playwright test",
+    "test:stg": "ENV=STG npx playwright test",
+    "test:stg-rmi": "ENV=STGRMI npx playwright test --grep @stgrmi",
+    "test:prod": "ENV=PROD npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.1.0",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.18.0",
+    "playwright-bdd": "^8.3.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "cross-env": "^10.0.0",
+    "dotenv": "^16.6.1",
+    "npm": "^11.5.2"
+  }
+}
