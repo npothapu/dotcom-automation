@@ -1,0 +1,41 @@
+{
+  "name": "dotcom-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:dev": "ENV=DEV npx playwright test",
+    "test:qa": "ENV=QA npx playwright test",
+    "test:recruit-stations": "ENV=PROD npx playwright test --grep @recruiting-stations",
+    "test:stg-recruit-stations": "ENV=STG npx playwright test --grep @recruiting-stations",
+    "test:stg": "ENV=STG npx playwright test",
+    "test:stg-rmi": "ENV=STGRMI npx playwright test --grep @rmi-stg",
+    "test:prod-rmi": "ENV=PRODRMI npx playwright test --grep @rmi-prod",
+    "test:stg-rmi-main-form": "ENV=STGRMI npx playwright test --grep @rmi-main-form",
+    "test:prod-rmi-main-form": "ENV=PRODRMI npx playwright test --grep @rmi-main-form",
+    "test:prod": "ENV=PROD npx playwright test",
+    "lighthouse-prod": "ENV=PROD npx playwright test --grep @lighthouse-report",
+    "lighthouse-stg": "ENV=STG npx playwright test --grep @lighthouse-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.1.0",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.18.0",
+    "get-port": "^7.1.0",
+    "lighthouse": "^12.8.2",
+    "playwright": "^1.55.0",
+    "playwright-bdd": "^8.3.1",
+    "playwright-lighthouse": "^4.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "browsers": "^1.0.2",
+    "cross-env": "^10.1.0",
+    "dotenv": "^16.6.1",
+    "npm": "^11.5.2"
+  }
+}

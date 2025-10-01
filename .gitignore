@@ -1,0 +1,13 @@
+
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+tests/playwright/
+/playwright/.auth/
+/playwright-json/
+/utils/env/.env
+!/utils/env/.env.example
+.DS_Store
+/lighthouse-reports

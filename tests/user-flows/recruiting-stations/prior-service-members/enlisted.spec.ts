@@ -1,0 +1,56 @@
+import { test, expect } from "@playwright/test";
+import {
+  acceptCookies,
+  eastCoastEnlisted,
+  closeHelpWidget,
+  handleGoogleMapsPopup,
+} from "../../../../utils/index";
+
+test(
+  "Find recruiting station for Enlisted prior service member and navigate to correct destination on Google Maps",
+  {
+    tag: [
+      "@user-flows",
+      "@recruiting-stations",
+      "@recruiting-stations-prior-service",
+      "@recruiting-stations-prior-service-enlisted",
+    ],
+  },
+  async ({ page, isMobile }) => {
+    await page.goto("/locations.html", { waitUntil: "domcontentloaded" });
+    await acceptCookies(page);
+    if (isMobile) {
+      await closeHelpWidget(page);
+    }
+    await page.getByRole("button", { name: "prior service marines" }).click();
+    await page
+      .getByRole("spinbutton", { name: "Zip Code" })
+      .fill(eastCoastEnlisted.userEnteredZip);
+    await page
+      .getByRole("radio", { name: eastCoastEnlisted.rank!.Enlisted! })
+      .check();
+    const findMyRecruitingStationBtn = page.getByRole("button", {
+      name: "Find my recruiting station",
+    });
+    await expect(findMyRecruitingStationBtn).toBeEnabled();
+    await findMyRecruitingStationBtn.click();
+    const recruitingStationName = page.getByRole("heading", {
+      name: eastCoastEnlisted.name,
+    });
+    const recruitingStationAddress = page.getByText(eastCoastEnlisted.address);
+    await expect(recruitingStationName).toBeVisible();
+    await expect(recruitingStationAddress).toBeVisible();
+    await page.getByRole("link", { name: "Directions" }).click();
+    const pageNavigation = page.waitForEvent("popup");
+    const nextPage = await pageNavigation;
+    const currentURL = nextPage.url();
+    const decodedURL = decodeURIComponent(currentURL);
+    if (isMobile) {
+      await handleGoogleMapsPopup(nextPage);
+    }
+    expect(decodedURL).toContain("123 Example Street");
+    expect(decodedURL).toContain("Example City");
+    expect(decodedURL).toContain("EX");
+    expect(decodedURL).toContain("12345");
+  }
+);
