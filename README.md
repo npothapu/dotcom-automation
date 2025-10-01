@@ -85,3 +85,87 @@ After cloning the repository, you'll need to create your local environment file:
 3. **Important**: The `.env` file is automatically ignored by Git, so your local configurations and any sensitive information will never be committed to the repository.
 
 The `.env.example` file serves as a template showing the required environment variables and their expected format. Always keep the example file updated when adding new environment variables to ensure other team members know what configuration is needed.
+
+## MCP Server Setup
+
+### What is MCP (Model Context Protocol)?
+
+MCP enables AI assistants to securely access external data sources and tools. For this automation framework, an MCP server can provide enhanced capabilities for test generation, debugging, and project management.
+
+### Prerequisites
+
+- Node.js 18+ installed
+- npm or pnpm package manager
+- This automation framework already set up
+
+### Setting Up Playwright MCP Server
+
+1. **Install MCP Playwright Server**:
+   ```powershell
+   # Using npm
+   npm install -g @modelcontextprotocol/server-playwright
+   
+   # Or using pnpm
+   pnpm add -g @modelcontextprotocol/server-playwright
+   ```
+
+2. **Configure MCP Client** (Claude Desktop/VS Code):
+   
+   **For Claude Desktop** - Add to your `claude_desktop_config.json`:
+   ```json
+   {
+     "mcpServers": {
+       "playwright": {
+         "command": "npx",
+         "args": ["@modelcontextprotocol/server-playwright"],
+         "env": {
+           "PLAYWRIGHT_BASE_URL": "https://your-test-site.com"
+         }
+       }
+     }
+   }
+   ```
+
+   **For VS Code** - Install the MCP extension and configure similarly.
+
+3. **Environment Configuration**:
+   ```powershell
+   # Add to your .env file
+   PLAYWRIGHT_BASE_URL=https://your-test-site.com
+   PLAYWRIGHT_BROWSER=chromium
+   PLAYWRIGHT_HEADLESS=false
+   ```
+
+### Using MCP with This Framework
+
+1. **Test Generation**: Use MCP to generate new test scenarios based on user flows
+2. **Debugging**: Get AI assistance for test failures and debugging
+3. **Code Review**: Automated suggestions for test improvement
+4. **Documentation**: Generate test documentation and reports
+
+### Example MCP Commands
+
+```powershell
+# Start MCP server manually for testing
+npx @modelcontextprotocol/server-playwright
+
+# Run with specific configuration
+PLAYWRIGHT_BASE_URL=https://your-site.com npx @modelcontextprotocol/server-playwright
+```
+
+### Troubleshooting MCP Setup
+
+- **Permission Issues**: Run PowerShell as Administrator if needed
+- **Path Issues**: Ensure Node.js and npm are in your system PATH
+- **Port Conflicts**: MCP servers typically use different ports automatically
+- **Browser Issues**: Make sure Playwright browsers are installed: `npx playwright install`
+
+### Benefits of MCP Integration
+
+- **Enhanced Test Creation**: AI-assisted test scenario generation
+- **Smart Debugging**: Contextual assistance for test failures
+- **Code Quality**: Automated suggestions for best practices
+- **Documentation**: Auto-generated test documentation
+- **Maintenance**: Proactive suggestions for test updates
+
+For more information, visit the [MCP Documentation](https://modelcontextprotocol.io/docs).
