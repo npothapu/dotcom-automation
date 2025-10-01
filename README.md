@@ -17,6 +17,7 @@ Prereq: Ensure you have local admin permissions.
     - Install project dependencies: npm/pnpm install
     - Install DotEnv: npm/pnpm install dotenv
     - Install Cross-Env: npm/pnpm install cross-env
+    - Install Playwright Lighthouse Library: npm/pnpm install --save-dev playwright-lighthouse playwright lighthouse
 - Install these VSCode extensions for ease of use:
   - Playwright Test for VSCode
   - Prettier - Code formatter

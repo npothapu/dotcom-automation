@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { subnavs } from '../../../utils/data/navigation/nav';
+import { subnavs } from '../../../utils/data/index';
 
 test.beforeEach(async ({ page }) => {
     await page.goto('/');

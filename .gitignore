@@ -9,3 +9,4 @@ tests/playwright/
 /playwright-json/
 /utils/env/
 .DS_Store
+/lighthouse-reports
