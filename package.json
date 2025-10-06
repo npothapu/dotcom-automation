@@ -34,7 +34,7 @@
   "dependencies": {
     "@axe-core/playwright": "^4.10.2",
     "browsers": "^1.0.2",
-    "cross-env": "^10.1.0",
+    "cross-env": "^10.0.0",
     "dotenv": "^16.6.1",
     "npm": "^11.5.2"
   }

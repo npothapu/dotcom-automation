@@ -7,3 +7,5 @@ export * from "./data/rmi/main-form/test-user-data/rmi-data";
 export * from "./helpers/rmi/main-form/fill-main-form";
 export * from "./helpers/rmi/influencer-form/fill-influencer-form";
 export * from "./helpers/google-analytics/block-google-analytics";
+export * from "./data/footer/links/types/footer-links";
+export * from "./data/footer/links/footer-link-data";
